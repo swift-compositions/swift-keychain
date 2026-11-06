@@ -1,3 +1,4 @@
+#if canImport(Security)
 import Foundation
 import Security
 
@@ -54,3 +55,4 @@ extension Keychain.Item {
         guard status == errSecSuccess || status == errSecItemNotFound else { throw .unwritable(status) }
     }
 }
+#endif

@@ -1,0 +1,9 @@
+# .github/metadata.yaml
+description: "One owner for a generic password in the login keychain, with Apple's Security framework behind it."
+topics:
+  - compositions
+  - keychain
+  - security
+homepage: "https://swift-institute.org"
+readme:
+  family: E

@@ -1,3 +1,4 @@
+#if canImport(Security)
 import Keychain_Security
 import Security
 import Testing
@@ -20,3 +21,4 @@ import Testing
         #expect(Keychain.Error.unwritable(-2).status == -2)
     }
 }
+#endif
