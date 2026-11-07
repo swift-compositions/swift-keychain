@@ -29,7 +29,6 @@
             for line in attributes.split(separator: "\n") where line.contains("\"acct\"<blob>=") {
                 let value = line.split(separator: "=", maxSplits: 1).last.map(String.init) ?? ""
                 if value.hasPrefix("\""), value.hasSuffix("\""), value.count >= 2 { return String(value.dropFirst().dropLast()) }
-                // `security` prints non-ASCII values as hex, followed by an escaped rendering.
                 if value.hasPrefix("0x"), let hex = value.dropFirst(2).split(separator: " ").first {
                     var bytes: [UInt8] = []
                     var index = hex.startIndex
@@ -56,7 +55,6 @@
             }
             let data = output.fileHandleForReading.readDataToEndOfFile()
             process.waitUntilExit()
-            // 44 is security's "the specified item could not be found in the keychain".
             if process.terminationStatus == 44 { return nil }
             guard process.terminationStatus == 0 else { throw .unreadable(process.terminationStatus) }
             return String(decoding: data, as: UTF8.self)
